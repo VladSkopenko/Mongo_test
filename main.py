@@ -52,7 +52,10 @@ def update(pk, name, age, features):
 
 
 def delete_of(pk):
-    ...
+    result = db.cats.delete_one({"_id": ObjectId(pk)})
+    return result
+
+
 
 
 def main():
@@ -69,11 +72,12 @@ def main():
             print(table_colored)
 
         case "update":
-            r = update(pk, name, age, features)
-            print(r)
+            result = update(pk, name, age, features)
+            print(result)
+
         case "delete":
-            r = delete_of(pk)
-            print(r)
+            result = delete_of(pk)
+            print(result)
         case _:
             print("Unknown command")
 
